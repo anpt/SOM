@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=SOM
+Exec=SOM
+Name=SOM
+# translation example:
+# your app name in German locale (de)
+Name[de]=SOM
+
