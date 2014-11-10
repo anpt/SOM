@@ -11,15 +11,11 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>Choose file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
+        <source>SOM</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -35,4 +31,3 @@
     </message>
 </context>
 </TS>
-
