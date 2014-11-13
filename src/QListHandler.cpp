@@ -5,7 +5,7 @@ QListHandler::QListHandler(QObject *parent) : QObject(parent)
 
 }
 
-void QListHandler::setListhandler(const QList<QStringList> &listhandler){
+void QListHandler::setListhandler(const QStringList &listhandler){
     m_listhandler = listhandler;
 }
 qint32 QListHandler::count() const
@@ -13,17 +13,13 @@ qint32 QListHandler::count() const
     return m_listhandler.count();
 }
 
-QString QListHandler::ItemAt(const int &i, const int &j)
+QString QListHandler::itemat(const int &i)
 {
     QString value;
     if(i>=0 && i<m_listhandler.count())
     {
-        if(j>=0 && j<m_listhandler.at(i).count())
-        {
-            value = m_listhandler.at(i).at(j);
-        }
+        value = m_listhandler.at(i);
     }
     return value;
 }
 
-bb

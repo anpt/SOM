@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_QListHandler_t {
-    QByteArrayData data[6];
-    char stringdata[32];
+    QByteArrayData data[5];
+    char stringdata[30];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,10 +33,9 @@ QT_MOC_LITERAL(0, 0, 12),
 QT_MOC_LITERAL(1, 13, 5),
 QT_MOC_LITERAL(2, 19, 0),
 QT_MOC_LITERAL(3, 20, 6),
-QT_MOC_LITERAL(4, 27, 1),
-QT_MOC_LITERAL(5, 29, 1)
+QT_MOC_LITERAL(4, 27, 1)
     },
-    "QListHandler\0count\0\0ItemAt\0i\0j\0"
+    "QListHandler\0count\0\0itemat\0i\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,11 +54,11 @@ static const uint qt_meta_data_QListHandler[] = {
 
  // methods: name, argc, parameters, tag, flags
        1,    0,   24,    2, 0x02,
-       3,    2,   25,    2, 0x02,
+       3,    1,   25,    2, 0x02,
 
  // methods: parameters
     QMetaType::Int,
-    QMetaType::QString, QMetaType::Int, QMetaType::Int,    4,    5,
+    QMetaType::QString, QMetaType::Int,    4,
 
        0        // eod
 };
@@ -71,7 +70,7 @@ void QListHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: { qint32 _r = _t->count();
             if (_a[0]) *reinterpret_cast< qint32*>(_a[0]) = _r; }  break;
-        case 1: { QString _r = _t->ItemAt((*reinterpret_cast< const int(*)>(_a[1])),(*reinterpret_cast< const int(*)>(_a[2])));
+        case 1: { QString _r = _t->itemat((*reinterpret_cast< const int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         default: ;
         }

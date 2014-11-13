@@ -26,7 +26,8 @@ OTHER_FILES += qml/SOM.qml \
     rpm/SOM.yaml \
     translations/*.ts \
     SOM.desktop \
-    qml/pages/files.qml
+    qml/pages/files.qml \
+    qml/pages/newTodo.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

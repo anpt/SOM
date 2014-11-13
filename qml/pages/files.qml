@@ -6,17 +6,16 @@ Page{
     SilicaFlickable {
         anchors.fill: parent
         SilicaListView{
-                anchors.centerIn: parent
-                 width: 480;
-                model: ListModel{
-                    ListElement{ file: "myfile.org"}
-                }
-            delegate: Item{
-                        width: ListView.view.width;
-                        height: Theme.itemSizeSmall
-                     Label{ text: file}
-
+            VerticalScrollDecorator{}
+            width: parent.width;
+            model: ListModel{
+                ListElement{ file: "myfile.org"}
             }
-       }
+            delegate: BackgroundItem{
+                width: ListView.view.width;
+                height: Theme.itemSizeSmall
+                Label{ text: file}
+            }
+        }
     }
 }

@@ -30,6 +30,10 @@
         <source>SOM</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SOM1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SecondPage</name>

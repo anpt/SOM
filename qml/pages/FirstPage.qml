@@ -56,16 +56,33 @@ Page {
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingSmall
             PageHeader {
                 title: qsTr("SOM")
             }
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("SOM")
+                text: qsTr("SOM1")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+            Text{
+                text: filehandler.list.count()
+                font.pixelSize: Theme.fontSizeSmall
+
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 100
+                color: "red"
+            }
+            Rectangle {
+                width: parent.width
+                height: 100
+                color: "green"
+            }
+
 
 
        }

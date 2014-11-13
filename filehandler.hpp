@@ -5,14 +5,27 @@
 #include <string>
 #include <vector>
 #include <ctime>
-class filehandler
+#include <QObject>
+#include <QStringList>
+#include <QList>
+#include <src/QListHandler.h>
+#include <QStandardPaths>
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
+class filehandler : public QObject
 {
-private:
-	std::string cTime();
+    Q_OBJECT
+    Q_PROPERTY(QObject *list READ list)
 public:
-	void newTodo(std::string text, std::string file, std::string date);
-	void clockin(std::string header, std::string file);
-	void clockout(std::string header, std::string file);	
-	void listHeaders(std::string file);
+    explicit filehandler(QObject *parnet = 0);
+    void newTodo(QString text, QString file, QString date);
+    void clockin(QString header, QString file);
+    void clockout(QString header, QString file);
+    void listHeaders(QString file);
+    QObject *list();
+private:
+    QString cTime();
+    QListHandler m_list;
 };
 #endif

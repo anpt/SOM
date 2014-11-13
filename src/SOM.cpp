@@ -33,7 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
-
+#include <filehandler.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -45,7 +45,15 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
-
-    return SailfishApp::main(argc, argv);
+    QGuiApplication *app = SailfishApp::application(argc, argv);
+    QQuickView *view = SailfishApp::createView();
+    filehandler *fh = new filehandler();
+    fh->newTodo("Test","test.org","2014-11-12");
+    fh->listHeaders("test.org");
+    fh->clockin("Test","test.org");
+    view->rootContext()->setContextProperty("filehandler", fh);
+    view->setSource(SailfishApp::pathTo("qml/SOM.qml"));
+    view->showFullScreen();
+    app->exec();
 }
 
