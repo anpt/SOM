@@ -11,23 +11,30 @@
 
 # The name of your application
 TARGET = SOM
-
+CONFIG += c++11
 CONFIG += sailfishapp
 
-SOURCES += src/SOM.cpp
+SOURCES += src/SOM.cpp \
+    filehandler.cpp \
+    src/QListHandler.cpp
 
 OTHER_FILES += qml/SOM.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
     rpm/SOM.changes.in \
     rpm/SOM.spec \
     rpm/SOM.yaml \
     translations/*.ts \
-    SOM.desktop
+    SOM.desktop \
+    qml/pages/files.qml \
+    qml/pages/newTodo.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/SOM-de.ts
+
+HEADERS += \
+    filehandler.hpp \
+    src/QListHandler.h
 
