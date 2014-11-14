@@ -21,7 +21,7 @@ public:
     explicit filehandler(QObject *parnet = 0);
     void newTodo(QString text, QString file, QString date);
     void clockin(QString header, QString file);
-    void clockout(QString header, QString file);
+    void clockout(QString header, QString fileName);
     void listHeaders(QString file);
     QObject *list();
 private:

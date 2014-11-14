@@ -10,7 +10,7 @@ void filehandler::newTodo(QString text, QString fileName, QString date)
     path.append(fileName);
     QFile outfile;
     outfile.setFileName(path);
-    outfile.open(QIODevice::ReadWrite);
+    outfile.open(QIODevice::WriteOnly|QIODevice::Append|QIODevice::Text);
     qDebug() << path;
     QTextStream stream(&outfile);
     stream <<"* TODO " << text << "\n" << "<" + date << ">\n";
@@ -26,11 +26,11 @@ void filehandler::clockin(QString header, QString fileName)
     outfile.open(QIODevice::ReadOnly);
     QTextStream instream(&outfile);
     std::vector<QString>::iterator it;
-	
+    qDebug() << "Ska börja klocka in";
 //skriv in alla strängar i en vektor
     do{
         lines.push_back(instream.readLine());
-    }while(instream.atEnd());
+    }while(!instream.atEnd());
     it = lines.begin();
     for (int i = 0; i < lines.size(); ++i)
     {
@@ -44,6 +44,54 @@ void filehandler::clockin(QString header, QString fileName)
     }
     outfile.close();
     //skriv till file
+     qDebug() << "har klockat in";
+    outfile.setFileName(path);
+    outfile.open(QIODevice::WriteOnly);
+    QTextStream outstream(&outfile);
+    qDebug() << lines.size();
+    for (int i = 0; i < lines.size(); ++i)
+    {
+        outstream << lines.at(i);
+        endl(outstream);
+    }
+    outfile.close();
+    qDebug() << "Är färdig med klockningen";
+}
+void filehandler::clockout(QString header, QString fileName )
+{
+    std::vector<QString> lines;
+    QString path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+    path.append(fileName);
+    QFile outfile;
+    outfile.setFileName(path);
+    outfile.open(QIODevice::ReadOnly);
+    QTextStream instream(&outfile);
+    std::vector<QString>::iterator it;
+    qDebug() << "Ska klocka ut";
+	
+//skriv in alla strängar i en vektor
+    do{
+        qDebug()<<"Tick";
+        lines.push_back(instream.readLine());
+    }while(!instream.atEnd());
+    it = lines.begin();
+    qDebug() << "Ska klocka ut2";
+    qDebug() << lines.size();
+    for (int i = 0; i < lines.size(); ++i)
+    {
+        if (lines.at(i).contains(header))
+        {
+            qDebug() << "Är i if satsen";
+            //fix lines
+            qDebug() << i;
+            lines[i+1] = lines[i+1] + QString::fromLatin1("--");
+            qDebug() << "Kommit ett steg";
+            lines[i+1] = lines[i+1]+ cTime();
+        }
+    }
+    qDebug() << "har klockat ut";
+    outfile.close();
+    //skriv till file
 
     outfile.setFileName(path);
     outfile.open(QIODevice::WriteOnly);
@@ -53,41 +101,9 @@ void filehandler::clockin(QString header, QString fileName)
         outstream << lines.at(i);
         endl(outstream);
     }
+    qDebug("HAr klockat ut");
     outfile.close();
 }
-//void filehandler::clockout(QString header, QString file)
-//{
-//	std::fstream outfile;
-//	std::string actLine;
-//	std::vector<std::string> lines;
-//	outfile.open(file.c_str());
-//	std::vector<std::string>::iterator it;
-	
-////skriv in alla strängar i en vektor
-//	while(std::getline(outfile, actLine)){
-//		lines.push_back(actLine);
-//	}
-//	it = lines.begin();
-//	for (int i = 0; i < lines.size(); ++i)
-//	{
-//		if (lines.at(i).find(header) != std::string::npos)
-//		{
-//			//fix lines
-//			lines[i+1] += "--";
-//			lines[i+1] += cTime();
-//		}
-//	}
-//	outfile.close();
-//	//skriv till file
-//	std::ofstream of;
-//	of.open(file.c_str());
-	
-//	for (it = lines.begin(); it < lines.end(); ++it)
-//	{
-//		of << *it << std::endl;
-//	}
-//	of.close();
-//}
 
 QString filehandler::cTime()
 {
@@ -161,7 +177,7 @@ void filehandler::listHeaders(QString fileName)
         QStringList tmp;
         do{
             lines.push_back(instream.readLine());
-        }while(instream.atEnd());
+        }while(!instream.atEnd());
         for (int i = 0; i < lines.size(); ++i)
         {
             if (lines.at(i).contains("*"))
