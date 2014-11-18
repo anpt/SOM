@@ -182,16 +182,14 @@ void filehandler::listHeaders(QString fileName)
         {
             if (lines.at(i).contains("*"))
             {
-                tmp << lines.at(i);
-
+                headerList.append(new todoHeader(lines.at(i)));
             }
         }
-        m_list.setListhandler(tmp);
         outfile.close();
     }
 }
 
-QObject *filehandler::list()
+QList<QObject*> filehandler::list()
 {
-    return &m_list;
+    return headerList;
 }

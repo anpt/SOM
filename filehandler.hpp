@@ -8,7 +8,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QList>
-#include <src/QListHandler.h>
+#include <src/todoHeader.h>
 #include <QStandardPaths>
 #include <QFile>
 #include <QTextStream>
@@ -16,16 +16,16 @@
 class filehandler : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QObject *list READ list)
+    Q_PROPERTY(QList<QObject*> list READ list)
 public:
     explicit filehandler(QObject *parnet = 0);
     void newTodo(QString text, QString file, QString date);
-    void clockin(QString header, QString file);
-    void clockout(QString header, QString fileName);
-    void listHeaders(QString file);
-    QObject *list();
+    Q_INVOKABLE void clockin(QString header, QString file);
+    Q_INVOKABLE void clockout(QString header, QString fileName);
+    Q_INVOKABLE void listHeaders(QString file);
+    QList<QObject*> list();
 private:
     QString cTime();
-    QListHandler m_list;
+    QList<QObject*> headerList;
 };
 #endif

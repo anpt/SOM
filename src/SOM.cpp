@@ -50,9 +50,10 @@ int main(int argc, char *argv[])
     filehandler *fh = new filehandler();
     fh->newTodo("Test2","test.org","2014-11-12");
     fh->listHeaders("test.org");
-    fh->clockin("Test","test.org");
-    fh->clockout("Test","test.org");
+    //fh->clockin("Test","test.org");
+    //fh->clockout("Test","test.org");
     view->rootContext()->setContextProperty("filehandler", fh);
+    view->rootContext()->setContextProperty("Headermodel",QVariant::fromValue(fh->list()));
     view->setSource(SailfishApp::pathTo("qml/SOM.qml"));
     view->showFullScreen();
     app->exec();
