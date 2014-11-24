@@ -1,8 +1,8 @@
 %dir /usr/lib/debug
 %dir /usr/lib/debug/.build-id
-%dir /usr/lib/debug/.build-id/7e
+%dir /usr/lib/debug/.build-id/4d
 %dir /usr/lib/debug/usr
 %dir /usr/lib/debug/usr/bin
-/usr/lib/debug/.build-id/7e/64e796a9dbdc4e5c512f41636d737c950a1ee9.debug
-/usr/lib/debug/.build-id/7e/64e796a9dbdc4e5c512f41636d737c950a1ee9
+/usr/lib/debug/.build-id/4d/4e85f52d0ff1f308453b7171b57426f8d0bd1e
+/usr/lib/debug/.build-id/4d/4e85f52d0ff1f308453b7171b57426f8d0bd1e.debug
 /usr/lib/debug/usr/bin/SOM.debug

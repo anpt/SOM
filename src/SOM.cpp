@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     QGuiApplication *app = SailfishApp::application(argc, argv);
     QQuickView *view = SailfishApp::createView();
     filehandler *fh = new filehandler();
-    fh->newTodo("Test2","test.org","2014-11-12");
+    //fh->newTodo("Test2","test.org","2014-11-12");
     fh->listHeaders("test.org");
     //fh->clockin("Test","test.org");
     //fh->clockout("Test","test.org");

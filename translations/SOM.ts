@@ -19,7 +19,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SOM1</source>
+        <source>TODO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Todo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

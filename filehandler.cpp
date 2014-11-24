@@ -171,6 +171,7 @@ void filehandler::listHeaders(QString fileName)
     QFile outfile;
     outfile.setFileName(path);
     qDebug() << path;
+    headerList.clear();
     if(outfile.open(QIODevice::ReadOnly)){
         QTextStream instream(&outfile);
         qDebug() << "Kan öppna fil";

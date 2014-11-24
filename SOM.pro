@@ -16,7 +16,8 @@ CONFIG += sailfishapp
 
 SOURCES += src/SOM.cpp \
     filehandler.cpp \
-    src/QListHandler.cpp
+    src/QListHandler.cpp \
+    src/todoHeader.cpp
 
 OTHER_FILES += qml/SOM.qml \
     qml/cover/CoverPage.qml \
@@ -36,5 +37,6 @@ TRANSLATIONS += translations/SOM-de.ts
 
 HEADERS += \
     filehandler.hpp \
-    src/QListHandler.h
+    src/QListHandler.h \
+    src/todoHeader.h
 

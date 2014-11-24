@@ -19,7 +19,7 @@ class filehandler : public QObject
     Q_PROPERTY(QList<QObject*> list READ list)
 public:
     explicit filehandler(QObject *parnet = 0);
-    void newTodo(QString text, QString file, QString date);
+    Q_INVOKABLE void newTodo(QString text, QString file, QString date);
     Q_INVOKABLE void clockin(QString header, QString file);
     Q_INVOKABLE void clockout(QString header, QString fileName);
     Q_INVOKABLE void listHeaders(QString file);

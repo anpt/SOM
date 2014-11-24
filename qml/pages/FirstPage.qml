@@ -45,6 +45,10 @@ Page {
                 text: qsTr("Choose file")
                 onClicked: pageStack.push(Qt.resolvedUrl("files.qml"))
             }
+            MenuItem {
+                text: qsTr("New Todo")
+                onClicked: pageStack.push(Qt.resolvedUrl("newTodo.qml"))
+            }
         }
 
         // Tell SilicaFlickable the height of its content.
@@ -53,6 +57,7 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
         Column {
+
             id: column
 
             width: page.width
@@ -62,32 +67,46 @@ Page {
             }
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("SOM1")
+                text: qsTr("TODO")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
-            Text{
-                text: filehandler.list.count()
-                font.pixelSize: Theme.fontSizeSmall
+
+            SilicaListView{
+                id: listView
+                width: page.width
+                height: page.height
+                model: ListView.model = Headermodel
+
+                delegate: BackgroundItem {
+                        id: headers
+                        width: parent.width
+                        height: Theme.itemSizeSmall
+                        Text{height: Theme.itemSizeSmall
+                            color:Theme.secondaryHighlightColor
+                            font.pixelSize: Theme.fontSizeSmall
+                            text: header
+                        }
+
+                        onClicked: {
+                            filehandler.clockin(header,"test.org")
+                        }
+                        onPressAndHold: {
+                            filehandler.clockout(header,"test.org")
+                        }
+                    }
+
+                }
+
+
 
             }
 
-            Rectangle {
-                width: parent.width
-                height: 100
-                color: "red"
-            }
-            Rectangle {
-                width: parent.width
-                height: 100
-                color: "green"
-            }
-
-
-
-       }
+        }
 
     }
-}
+
+
+
 
 
