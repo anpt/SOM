@@ -35,6 +35,8 @@
 #include <sailfishapp.h>
 #include <filehandler.hpp>
 
+
+
 int main(int argc, char *argv[])
 {
     // SailfishApp::main() will display "qml/template.qml", if you need more
@@ -53,9 +55,8 @@ int main(int argc, char *argv[])
     //fh->clockin("Test","test.org");
     //fh->clockout("Test","test.org");
     view->rootContext()->setContextProperty("filehandler", fh);
-    view->rootContext()->setContextProperty("Headermodel",QVariant::fromValue(fh->list()));
+    view->rootContext()->setContextProperty("Headermodel",fh);
     view->setSource(SailfishApp::pathTo("qml/SOM.qml"));
     view->showFullScreen();
     app->exec();
 }
-

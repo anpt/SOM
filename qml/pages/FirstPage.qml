@@ -85,14 +85,14 @@ Page {
                         Text{height: Theme.itemSizeSmall
                             color:Theme.secondaryHighlightColor
                             font.pixelSize: Theme.fontSizeSmall
-                            text: header
+                            text: todo
                         }
 
                         onClicked: {
-                            filehandler.clockin(header,"test.org")
+                            filehandler.clockin(todo,"test.org")
                         }
                         onPressAndHold: {
-                            filehandler.clockout(header,"test.org")
+                            filehandler.clockout(todo,"test.org")
                         }
                     }
 

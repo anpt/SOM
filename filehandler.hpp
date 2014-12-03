@@ -13,19 +13,27 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
-class filehandler : public QObject
+#include <QAbstractListModel>
+class filehandler : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<QObject*> list READ list)
 public:
+    enum todoRoles{
+        todorole = Qt::UserRole + 1
+    };
+
     explicit filehandler(QObject *parnet = 0);
+
     Q_INVOKABLE void newTodo(QString text, QString file, QString date);
     Q_INVOKABLE void clockin(QString header, QString file);
     Q_INVOKABLE void clockout(QString header, QString fileName);
     Q_INVOKABLE void listHeaders(QString file);
-    QList<QObject*> list();
+    int rowCount(const QModelIndex & parent = QModelIndex()) const;
+    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+protected:
+    QHash<int, QByteArray> roleNames() const;
 private:
     QString cTime();
-    QList<QObject*> headerList;
+    QList<todoHeader*> headerList;
 };
 #endif

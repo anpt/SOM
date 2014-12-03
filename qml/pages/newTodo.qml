@@ -6,7 +6,7 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
-    }
+
     Column{
         TextField {
             id: newTodo
@@ -19,7 +19,7 @@ Page {
             id: newDate
             width: page.width
             height: Theme.smallItemSize
-            placeholderText: "Enter New Todo"
+            placeholderText: "Deadline"
             label: "TODO"
             inputMethodHints : Qt.ImhDate
         }
@@ -29,8 +29,10 @@ Page {
                 filehandler.newTodo(newTodo.text,"test.org",newDate.text)
                 filehandler.listHeaders("test.org")
 
+
             }
         }
+    }
 
     }
 }

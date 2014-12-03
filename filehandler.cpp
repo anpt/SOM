@@ -1,8 +1,9 @@
 #include "filehandler.hpp"
-filehandler::filehandler(QObject *parent) : QObject(parent)
+filehandler::filehandler(QObject *parent) : QAbstractListModel(parent)
 {
 
 }
+
 
 void filehandler::newTodo(QString text, QString fileName, QString date)
 {
@@ -174,8 +175,7 @@ void filehandler::listHeaders(QString fileName)
     headerList.clear();
     if(outfile.open(QIODevice::ReadOnly)){
         QTextStream instream(&outfile);
-        qDebug() << "Kan öppna fil";
-        QStringList tmp;
+        qDebug() << "open file";
         do{
             lines.push_back(instream.readLine());
         }while(!instream.atEnd());
@@ -183,14 +183,44 @@ void filehandler::listHeaders(QString fileName)
         {
             if (lines.at(i).contains("*"))
             {
+                qDebug()<< lines.at(i);
+                beginInsertRows(QModelIndex(),rowCount(),rowCount());
                 headerList.append(new todoHeader(lines.at(i)));
+                endInsertRows();
+
             }
         }
         outfile.close();
     }
+
 }
 
-QList<QObject*> filehandler::list()
+
+int filehandler::rowCount(const QModelIndex & parent) const
 {
-    return headerList;
+    Q_UNUSED(parent);
+    return headerList.count();
+}
+
+QVariant filehandler::data(const QModelIndex & index, int role) const
+{
+    if (index.row() < 0 || index.row() >= headerList.count())
+        return QVariant();
+    qDebug() << index.row();
+    qDebug() << headerList.size();
+    const todoHeader * header;
+    header = headerList.at(index.row());
+
+    if(role == todorole)
+        qDebug() << "retuner header" << header->header();
+
+        return header->header();
+    return QVariant();
+}
+
+QHash<int, QByteArray> filehandler::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[todorole] = "todo";
+    return roles;
 }

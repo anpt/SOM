@@ -9,7 +9,6 @@
 #include "../filehandler.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
-#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'filehandler.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -20,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_filehandler_t {
-    QByteArrayData data[13];
-    char stringdata[103];
+    QByteArrayData data[11];
+    char stringdata[82];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,13 +39,11 @@ QT_MOC_LITERAL(6, 36, 7),
 QT_MOC_LITERAL(7, 44, 6),
 QT_MOC_LITERAL(8, 51, 8),
 QT_MOC_LITERAL(9, 60, 8),
-QT_MOC_LITERAL(10, 69, 11),
-QT_MOC_LITERAL(11, 81, 4),
-QT_MOC_LITERAL(12, 86, 15)
+QT_MOC_LITERAL(10, 69, 11)
     },
     "filehandler\0newTodo\0\0text\0file\0date\0"
     "clockin\0header\0clockout\0fileName\0"
-    "listHeaders\0list\0QList<QObject*>\0"
+    "listHeaders\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +54,7 @@ static const uint qt_meta_data_filehandler[] = {
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
-       1,   54, // properties
+       0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -75,9 +72,6 @@ static const uint qt_meta_data_filehandler[] = {
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    7,    9,
     QMetaType::Void, QMetaType::QString,    4,
 
- // properties: name, type, flags
-      11, 0x80000000 | 12, 0x00095009,
-
        0        // eod
 };
 
@@ -92,18 +86,11 @@ void filehandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 3: _t->listHeaders((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
-    } else if (_c == QMetaObject::RegisterPropertyMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 0:
-            *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QObject*> >(); break;
-        }
     }
-
 }
 
 const QMetaObject filehandler::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_filehandler.data,
+    { &QAbstractListModel::staticMetaObject, qt_meta_stringdata_filehandler.data,
       qt_meta_data_filehandler,  qt_static_metacall, 0, 0}
 };
 
@@ -118,12 +105,12 @@ void *filehandler::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_filehandler.stringdata))
         return static_cast<void*>(const_cast< filehandler*>(this));
-    return QObject::qt_metacast(_clname);
+    return QAbstractListModel::qt_metacast(_clname);
 }
 
 int filehandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QObject::qt_metacall(_c, _id, _a);
+    _id = QAbstractListModel::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
@@ -135,33 +122,6 @@ int filehandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 4;
     }
-#ifndef QT_NO_PROPERTIES
-      else if (_c == QMetaObject::ReadProperty) {
-        void *_v = _a[0];
-        switch (_id) {
-        case 0: *reinterpret_cast< QList<QObject*>*>(_v) = list(); break;
-        }
-        _id -= 1;
-    } else if (_c == QMetaObject::WriteProperty) {
-        _id -= 1;
-    } else if (_c == QMetaObject::ResetProperty) {
-        _id -= 1;
-    } else if (_c == QMetaObject::QueryPropertyDesignable) {
-        _id -= 1;
-    } else if (_c == QMetaObject::QueryPropertyScriptable) {
-        _id -= 1;
-    } else if (_c == QMetaObject::QueryPropertyStored) {
-        _id -= 1;
-    } else if (_c == QMetaObject::QueryPropertyEditable) {
-        _id -= 1;
-    } else if (_c == QMetaObject::QueryPropertyUser) {
-        _id -= 1;
-    } else if (_c == QMetaObject::RegisterPropertyMetaType) {
-        if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
-    }
-#endif // QT_NO_PROPERTIES
     return _id;
 }
 QT_END_MOC_NAMESPACE
