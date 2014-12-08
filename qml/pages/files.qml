@@ -9,13 +9,18 @@ Page{
             VerticalScrollDecorator{}
             width: parent.width;
             model: ListModel{
-                ListElement{ file: "myfile.org"}
+                ListElement{ file: "notes.org"}
             }
+
             delegate: BackgroundItem{
                 width: ListView.view.width;
                 height: Theme.itemSizeSmall
                 Label{ text: file}
+
+
             }
+
         }
     }
+
 }

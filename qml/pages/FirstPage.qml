@@ -82,6 +82,8 @@ Page {
                         id: headers
                         width: parent.width
                         height: Theme.itemSizeSmall
+                        property alias filename : filename
+                        property string filename : "test.org"
                         Text{height: Theme.itemSizeSmall
                             color:Theme.secondaryHighlightColor
                             font.pixelSize: Theme.fontSizeSmall
@@ -89,10 +91,10 @@ Page {
                         }
 
                         onClicked: {
-                            filehandler.clockin(todo,"test.org")
+                            filehandler.clockin(todo,filename)
                         }
                         onPressAndHold: {
-                            filehandler.clockout(todo,"test.org")
+                            filehandler.clockout(todo,filename)
                         }
                     }
 

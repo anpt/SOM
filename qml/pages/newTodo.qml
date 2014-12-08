@@ -24,10 +24,12 @@ Page {
             inputMethodHints : Qt.ImhDate
         }
         Button {
+            property alias filename : filename;
+            property string filename: "test.org"
             text: "Save"
             onClicked: {
-                filehandler.newTodo(newTodo.text,"test.org",newDate.text)
-                filehandler.listHeaders("test.org")
+                filehandler.newTodo(newTodo.text,filename,newDate.text)
+                filehandler.listHeaders(filename)
 
 
             }
