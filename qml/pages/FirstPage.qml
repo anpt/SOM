@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+import "file.js" as FileJS
 
 Page {
     id: page
@@ -82,8 +82,7 @@ Page {
                         id: headers
                         width: parent.width
                         height: Theme.itemSizeSmall
-                        property alias filename : filename
-                        property string filename : "test.org"
+                        property string filename : FileJS.sharedFile
                         Text{height: Theme.itemSizeSmall
                             color:Theme.secondaryHighlightColor
                             font.pixelSize: Theme.fontSizeSmall

@@ -166,13 +166,16 @@ QString filehandler::cTime()
 
 void filehandler::listHeaders(QString fileName)
 {
+    qDebug() << fileName;
     std::vector<QString> lines;
     QString path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
     path.append(fileName);
     QFile outfile;
     outfile.setFileName(path);
     qDebug() << path;
+    beginRemoveRows(QModelIndex(),0,rowCount());
     headerList.clear();
+    endRemoveRows();
     if(outfile.open(QIODevice::ReadOnly)){
         QTextStream instream(&outfile);
         qDebug() << "open file";

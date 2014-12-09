@@ -38,4 +38,26 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>files</name>
+    <message>
+        <source>Change org file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SOM</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>newTodo</name>
+    <message>
+        <source>New Todo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SOM</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
